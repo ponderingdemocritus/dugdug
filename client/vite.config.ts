@@ -4,7 +4,7 @@ import path from "path";
 import topLevelAwait from "vite-plugin-top-level-await";
 import wasm from "vite-plugin-wasm";
 import svgr from "vite-plugin-svgr";
-import mkcert from "vite-plugin-mkcert";
+// import mkcert from "vite-plugin-mkcert";
 
 export default defineConfig(({ mode }) => {
   const env = loadEnv(mode, process.cwd(), "");
