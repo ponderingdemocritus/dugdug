@@ -32,6 +32,10 @@ export const getConnectors = (): { connectors: Connector[] } => {
         target: actions,
         method: "create_mine",
       },
+      {
+        target: actions,
+        method: "start_mining",
+      },
     ],
   }) as never as Connector;
   return { connectors: [cartridge] };
