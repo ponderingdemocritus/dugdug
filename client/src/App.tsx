@@ -57,7 +57,9 @@ function App() {
 
   const {} = useEvents();
 
-  const { account } = useAccount();
+  const { account, isConnected } = useAccount();
+
+  const [isLoading, setIsLoading] = useState(false);
 
   const renderLinks = (links: any) =>
     links.map(({ icon: Icon, label, badge }: any) => (
@@ -146,12 +148,18 @@ function App() {
             </SheetContent>
           </Sheet> */}
           <Button
-            onClick={() =>
-              client.actions.buy_axe({ account: account as Account, qty: 1 })
-            }
+            onClick={async () => {
+              setIsLoading(true);
+              await client.actions.buy_axe({
+                account: account as Account,
+                qty: 1,
+              });
+              setIsLoading(false);
+            }}
           >
             <Axe className="w-8 mr-3" />
-            $AXE: {readableAxeBalance}
+
+            {isLoading ? "Buying..." : `$AXE:${readableAxeBalance} `}
           </Button>
           <Button onClick={() => setPage("Shop")}>
             <Diamond className="w-8 mr-3" />
@@ -196,8 +204,6 @@ function App() {
             </DropdownMenuContent>
           </DropdownMenu>
         </header>
-
-        {/* <HaikuMessages /> */}
 
         <main className="flex flex-1 flex-col gap-4 py-4 lg:gap-6 lg:p-6 mt-14 md:mt-0 overflow-y-auto">
           <ScrollArea className="">{renderPage()}</ScrollArea>

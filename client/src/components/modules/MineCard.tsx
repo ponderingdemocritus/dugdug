@@ -48,8 +48,10 @@ import { Account, num, shortString } from "starknet";
 
 export const MineCard = ({
   mine,
+  account,
 }: {
   mine: ContractComponents["Mine"]["schema"];
+  account: Account;
 }) => {
   const {
     setup: { client },
@@ -60,8 +62,6 @@ export const MineCard = ({
   const { play } = useUiSounds();
 
   const { allMiners } = useMiners();
-
-  const { account } = useAccount();
 
   const [choice, setChoice] = useState(false);
 
@@ -125,7 +125,11 @@ export const MineCard = ({
             {imageUrl && <img className="object-fill" src={imageUrl} alt="" />}
             <div className="absolute bottom-4 right-4 flex -space-x-4 hover:-space-x-2 ">
               {allMiners
-                .filter((miner) => miner.minerClass.miner.mine_id === mine.id)
+                .filter(
+                  (miner) =>
+                    miner.minerClass.miner.mine_id === mine.id &&
+                    Number(mine.id) !== 0
+                )
                 .map((miner, index) => (
                   <div key={index} className="relative">
                     <img

@@ -17,6 +17,11 @@ import {
   CardHeader,
 } from "@/components/ui/card";
 import { MineClass } from "@/classes/MineClass";
+import { getTimeAgo } from "@/lib/utils";
+
+import { HaikuMessages } from "@/components/modules/MessagePrompt";
+
+import { motion } from "framer-motion";
 
 function Dashboard() {
   const {
@@ -42,7 +47,10 @@ function Dashboard() {
         return {
           time: mineUpdate?.time,
           component: (
-            <Card
+            <motion.div
+              initial={{ opacity: 0, y: 50 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5 }}
               className="flex flex-col flex-wrap sm:flex-row"
               key={`${mineUpdate?.id}-${mineUpdate?.time}`}
             >
@@ -151,24 +159,10 @@ function Dashboard() {
                 )}
 
                 <CardFooter className="text-xs text-secondary-foreground">
-                  {(() => {
-                    const timeDifference =
-                      Date.now() - (mineUpdate?.time || 0) * 1000;
-                    const minutes = Math.floor(timeDifference / (1000 * 60));
-                    const hours = Math.floor(minutes / 60);
-                    const days = Math.floor(hours / 24);
-
-                    if (days > 0) {
-                      return `${days} day${days > 1 ? "s" : ""} ago`;
-                    } else if (hours > 0) {
-                      return `${hours} hour${hours > 1 ? "s" : ""} ago`;
-                    } else {
-                      return `${minutes} minute${minutes > 1 ? "s" : ""} ago`;
-                    }
-                  })()}
+                  {getTimeAgo(mineUpdate?.time || 0)}
                 </CardFooter>
               </div>
-            </Card>
+            </motion.div>
           ),
         };
       })
@@ -179,9 +173,9 @@ function Dashboard() {
 
   return (
     <div className="container mx-auto md:w-1/2">
-      <h1 className="text-3xl font-bold mb-4">Activity Feed</h1>
-
-      <div className="grid grid-cols-1 gap-6">
+      <h1 className="text-3xl font-bold mb-4 font-arbutus">Activity Feed</h1>
+      {/* <HaikuMessages /> */}
+      <div className="grid grid-cols-1 gap-6 mt-8">
         {allEvents.map((event) => event.component)}
       </div>
     </div>

@@ -31,6 +31,8 @@ function Tavern() {
 
   const [filter, setFilter] = useState<"Dead" | "Alive">("Alive");
 
+  const [isLoading, setIsLoading] = useState(false);
+
   const { play } = useUiSounds();
 
   const filteredMiners = useMemo(() => {
@@ -50,11 +52,13 @@ function Tavern() {
       <Button
         className="mb-4"
         onClick={async () => {
+          setIsLoading(true);
           play();
           await client.actions.spawn_miner({ account: account as Account });
+          setIsLoading(false);
         }}
       >
-        Buy a Dwarf a Drink
+        {isLoading ? "Filling up Flagon...." : "Buy a round of drinks"}
       </Button>
 
       <div>

@@ -3,12 +3,14 @@ import {
   Card,
   CardContent,
   CardDescription,
+  CardFooter,
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
 import { Badge } from "../ui/badge";
 
 import React, { useMemo } from "react";
+import { getTimeAgo } from "@/lib/utils";
 
 export const MinerCard = ({
   miner,
@@ -36,7 +38,6 @@ export const MinerCard = ({
             />
             <div className="">
               <div className="flex gap-2">
-                {" "}
                 <Badge
                   className="mb-2"
                   variant={miner.isAlive() ? "default" : "destructive"}
@@ -44,19 +45,7 @@ export const MinerCard = ({
                   {" "}
                   {miner.status()}
                 </Badge>
-                {miner.isAlive() && (
-                  <Badge
-                    className="mb-2"
-                    variant={miner.isAlive() ? "default" : "destructive"}
-                  >
-                    {" "}
-                    {Number(miner.miner.mine_id) !== 0
-                      ? "mining " + miner.currentMine().name()
-                      : "no mine"}
-                  </Badge>
-                )}
               </div>
-
               <div className=" font-arbutus">{miner.name()}</div>
             </div>
           </div>
@@ -68,16 +57,26 @@ export const MinerCard = ({
         </CardDescription>
 
         <CardDescription>
-          LAST CHECKUP: <b>{miner.lastCheckup()}</b>
+          XP: <b>{miner.miner.xp}</b>
         </CardDescription>
+
         <CardDescription>
           AGE: <b>{miner.age()} minutes</b>
         </CardDescription>
-        <CardDescription>
-          XP: <b>{miner.miner.xp}</b>
-        </CardDescription>
+
         {children}
       </CardContent>
+      <CardFooter className="flex text-xs">
+        {miner.isAlive() && (
+          <Badge className="mb-2" variant={"outline"}>
+            {Number(miner.miner.last_checkup) !== 0
+              ? miner.currentMine().name() +
+                "|" +
+                getTimeAgo(miner.miner.last_checkup)
+              : "Idle"}
+          </Badge>
+        )}
+      </CardFooter>
     </Card>
   );
 };

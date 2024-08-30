@@ -645,7 +645,7 @@ export async function setupWorld(provider: DojoProvider) {
     // Call the `world` system with the specified Account and calldata
     const world = async (props: { account: Account }) => {
       try {
-        return await provider.execute(
+        const result = await provider.execute(
           props.account,
           {
             contractName: contract_name,
@@ -654,6 +654,8 @@ export async function setupWorld(provider: DojoProvider) {
           },
           "dugdug"
         );
+        await new Promise((resolve) => setTimeout(resolve, 3000)); // 2s delay
+        return result;
       } catch (error) {
         console.error("Error executing spawn:", error);
         throw error;
@@ -663,7 +665,7 @@ export async function setupWorld(provider: DojoProvider) {
     // Call the `spawn_miner` system with the specified Account and calldata
     const spawn_miner = async (props: { account: Account }) => {
       try {
-        return await provider.execute(
+        const result = await provider.execute(
           props.account,
           {
             contractName: contract_name,
@@ -672,6 +674,8 @@ export async function setupWorld(provider: DojoProvider) {
           },
           "dugdug"
         );
+        await new Promise((resolve) => setTimeout(resolve, 3000)); // 2s delay
+        return result;
       } catch (error) {
         console.error("Error executing spawn:", error);
         throw error;
@@ -682,7 +686,7 @@ export async function setupWorld(provider: DojoProvider) {
     const buy_axe = async (props: { account: Account; qty: number }) => {
       console.log(props.account);
       try {
-        return await provider.execute(
+        const result = await provider.execute(
           props.account,
           {
             contractName: contract_name,
@@ -691,6 +695,8 @@ export async function setupWorld(provider: DojoProvider) {
           },
           "dugdug"
         );
+        await new Promise((resolve) => setTimeout(resolve, 3000)); // 2s delay
+        return result;
       } catch (error) {
         console.error("Error executing spawn:", error);
         throw error;
@@ -705,7 +711,7 @@ export async function setupWorld(provider: DojoProvider) {
       choice: models.MinerChoice;
     }) => {
       try {
-        return await provider.execute(
+        const result = await provider.execute(
           props.account,
           {
             contractName: contract_name,
@@ -718,6 +724,8 @@ export async function setupWorld(provider: DojoProvider) {
           },
           "dugdug"
         );
+        await new Promise((resolve) => setTimeout(resolve, 3000)); // 2s delay
+        return result;
       } catch (error) {
         console.error("Error executing spawn:", error);
         throw error;
@@ -731,7 +739,7 @@ export async function setupWorld(provider: DojoProvider) {
       mine_id: number;
     }) => {
       try {
-        return await provider.execute(
+        const result = await provider.execute(
           props.account,
           {
             contractName: contract_name,
@@ -740,6 +748,8 @@ export async function setupWorld(provider: DojoProvider) {
           },
           "dugdug"
         );
+        await new Promise((resolve) => setTimeout(resolve, 3000)); // 2s delay
+        return result;
       } catch (error) {
         console.error("Error executing spawn:", error);
         throw error;
@@ -753,7 +763,7 @@ export async function setupWorld(provider: DojoProvider) {
       mine_id: number;
     }) => {
       try {
-        return await provider.execute(
+        const result = await provider.execute(
           props.account,
           {
             contractName: contract_name,
@@ -762,16 +772,17 @@ export async function setupWorld(provider: DojoProvider) {
           },
           "dugdug"
         );
+        await new Promise((resolve) => setTimeout(resolve, 3000)); // 2s delay
+        return result;
       } catch (error) {
         console.error("Error executing spawn:", error);
         throw error;
       }
     };
-
     // Call the `create_mine` system with the specified Account and calldata
     const create_mine = async (props: { account: Account }) => {
       try {
-        return await provider.execute(
+        const result = await provider.execute(
           props.account,
           {
             contractName: contract_name,
@@ -780,6 +791,8 @@ export async function setupWorld(provider: DojoProvider) {
           },
           "dugdug"
         );
+        await new Promise((resolve) => setTimeout(resolve, 3000)); // 2s delay
+        return result;
       } catch (error) {
         console.error("Error executing spawn:", error);
         throw error;

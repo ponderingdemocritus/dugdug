@@ -8,6 +8,8 @@ import { ToggleGroup, ToggleGroupItem } from "@/components/ui/toggle-group";
 import { useAccount } from "@starknet-react/core";
 import { Account } from "starknet";
 
+import { motion } from "framer-motion";
+
 function Mine() {
   const {
     setup: {
@@ -30,7 +32,7 @@ function Mine() {
         };
       })
       .filter((mine) => {
-        return mine.current_status?.toString() === filter;
+        return mine.current_status?.toString() === filter && mine.id !== 0;
       });
   }, [mines, filter]);
 
@@ -62,7 +64,14 @@ function Mine() {
 
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6 my-8">
         {allMines.map((mine) => (
-          <MineCard mine={mine as any} key={mine.id} />
+          <motion.div
+            key={mine.id}
+            initial={{ opacity: 0, y: 50 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5 }}
+          >
+            <MineCard mine={mine as any} account={account as Account} />
+          </motion.div>
         ))}
       </div>
     </div>

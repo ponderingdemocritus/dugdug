@@ -28,7 +28,7 @@ export const useEvents = () => {
 
   function createEventStream(world: World, component: Component<any>) {
     defineComponentSystem(world, component, (update: ComponentUpdate) => {
-      if (update.value[0]?.time * 1000 <= Date.now() - 10000) {
+      if (update.value[0]?.time * 1000 <= Date.now() - 100000) {
         return;
       }
 

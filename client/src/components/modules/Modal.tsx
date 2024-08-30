@@ -1,18 +1,22 @@
 import { useUIStore } from "@/hooks/state";
 import { Button } from "../ui/button";
 import { useMiners } from "@/hooks/useMiners";
-import { useEffect, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { SoundSelector, useUiSounds } from "@/hooks/useSound";
 import { useDojo } from "@/dojo/useDojo";
 import { Card, CardContent } from "../ui/card";
+import { useAccount } from "@starknet-react/core";
+import { Account } from "starknet";
 
 export const Modal = () => {
   const setModal = useUIStore((state) => state.setModal);
   const modalContent = useUIStore((state) => state.modalContent);
 
   const {
-    setup: { client, account },
+    setup: { client },
   } = useDojo();
+
+  const { account } = useAccount();
 
   const { play: playScream } = useUiSounds(SoundSelector.DWARFS_SCREAMING_IN_1);
   const { play: playYippee } = useUiSounds(SoundSelector.DWARFS_SAYING_YIPPE);
@@ -35,6 +39,13 @@ export const Modal = () => {
 
   const [loading, setLoading] = useState(false);
 
+  const yeildPerMiner = useMemo(() => {
+    return (
+      (modalContent.mine?.mine.mineral_payout || 0) /
+      (modalContent.mine?.totalMiners()! || 0)
+    );
+  }, []);
+
   return (
     <div
       className={`w-screen h-screen fixed z-50 overflow-hidden bg-cover bg-center bg-no-repeat ${
@@ -43,7 +54,7 @@ export const Modal = () => {
       style={{ backgroundImage: `url('${modalContent.mine?.image()}')` }}
     >
       <div className="w-full h-full bg-black bg-opacity-50 flex justify-center items-center">
-        <div className="container  p-8 rounded-lg">
+        <div className="container p-8 rounded-lg max-h-full overflow-y-auto">
           <div className="w-full mb-6">
             <Button onClick={() => setModal(false)}>close</Button>
           </div>
@@ -100,18 +111,21 @@ export const Modal = () => {
                           miner.minerClass.miner.mine_id ===
                             modalContent.mine?.mine.id && (
                             <Button
-                              variant={"destructive"}
+                              variant={"default"}
                               onClick={async () => {
                                 setLoading(true);
+
                                 await client.actions.leave_mine({
-                                  account: account.account,
+                                  account: account as Account,
                                   mine_id: modalContent.mine?.mine.id!,
                                   miner_id: miner.minerClass.miner.id || 0,
                                 });
                                 setLoading(false);
                               }}
                             >
-                              {loading ? "Leaving..." : "Leave Mine"}
+                              {loading
+                                ? "Withdrawing..."
+                                : `${yeildPerMiner} $MINERAL`}
                             </Button>
                           )}
                       </div>

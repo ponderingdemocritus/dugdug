@@ -2,13 +2,13 @@
 name = "haiku"
 
 [haiku.metadata]
-torii_url = "http://localhost:8080/"
-rpc_url = "http://localhost:5050/"
+torii_url = "https://api.cartridge.gg/x/dugdugdugdug/torii"
+rpc_url = "https://api.cartridge.gg/x/starknet/sepolia/"
 relay_url = "/ip4/127.0.0.1/udp/9090/quic-v1"
 database_url = "torii.db"
 world_address = "0x340ea7578c677d1ef6e5ca96035a3e1058e244132e7b82e5867d4bcc91c9d37"
-signer_address = "0xb3ff441a68610b30fd5e2abbf3a1548eb6ba6f3559f2862bf2dc757e5828ca"
-signer_private_key = "0x2bbf4f9fd0bbb2e60b0316c1fe0b76cf7a4d0198bd493ced9b8df2a3a24d68a"
+signer_address = "0x01BFC84464f990C09Cc0e5D64D18F54c3469fD5c467398BF31293051bAde1C39"
+signer_private_key = "0x075362a844768f31c8058ce31aec3dd7751686440b4f220f410ae0c9bf042e60"
 
 [haiku.context]
 story = "In the heart of the ancient mountains lies a network of dark, treacherous mines. These mines, rich with precious minerals, are the workplace of funny, yet brave dwarfs. However, the mines are unstable and prone to sudden collapses, often trapping and killing the dwarfs in tragic, yet oddly humorous ways. The dwarfs, with their quirky personalities and relentless spirit, continue to dig deeper, driven by the promise of untold riches and the thrill of adventure. They swear and curse at the rocks, making spelling errors on their signs and maps. This perilous setting forms the backdrop for a tale of bravery, greed, and the dark humor of life underground."

@@ -25,27 +25,35 @@ function Landing() {
           <h1 className="text-4xl md:text-6xl font-bold font-arbutus">
             DugDug
           </h1>
+          <div>
+            <p className="text-2xl my-4">
+              "Aye, this game be a prisoner's dilemma, but with dwarves!"
+            </p>
+          </div>
           <div className="text-4xl  my-8">
-            <div>1. Mine</div>
+            <div>1. AXE</div>
             <div>2. ....</div>
-            <div>3. Profit</div>
+            <div>3. MINERALS</div>
           </div>
 
           <div className="mt-8">
-            <Button
-              className="px-4 "
-              variant={"secondary"}
-              size={"sm"}
-              onClick={connectWallet}
-            >
-              Log in
-            </Button>
-            <Link
-              to={"/app"}
-              className="px-6 py-3 bg-primary text-white font-semibold rounded-lg shadow-md hover:bg-primary-dark mt-8"
-            >
-              Mine
-            </Link>
+            {!isConnected ? (
+              <Button
+                className="px-4 "
+                variant={"secondary"}
+                size={"sm"}
+                onClick={connectWallet}
+              >
+                Log in
+              </Button>
+            ) : (
+              <Link
+                to={"/app"}
+                className="px-6 py-3 bg-primary text-white font-semibold rounded-lg shadow-md hover:bg-primary-dark mt-8"
+              >
+                Mine
+              </Link>
+            )}
           </div>
         </div>
       </div>
