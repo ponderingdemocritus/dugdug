@@ -7,7 +7,7 @@ import svgr from "vite-plugin-svgr";
 import mkcert from "vite-plugin-mkcert";
 
 export default defineConfig({
-  plugins: [mkcert(), react(), wasm(), topLevelAwait(), svgr()],
+  plugins: [react(), wasm(), topLevelAwait(), svgr()],
   resolve: {
     alias: {
       "@": path.resolve(__dirname, "./src"),
@@ -16,9 +16,9 @@ export default defineConfig({
   server: {
     proxy: {
       "/api": {
-        target: "https://localhost:3000", // Replace with your API server URL
+        target: process.env.VITE_PUBLIC_API, // Replace with your API server URL
         changeOrigin: true,
-        secure: false,
+
         rewrite: (path) => path.replace(/^\/api/, ""),
       },
     },
