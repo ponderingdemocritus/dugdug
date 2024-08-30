@@ -10,6 +10,8 @@ import {
   HasValue,
 } from "@dojoengine/recs";
 import { MinerClass } from "@/classes/MinerClass";
+import { useAccount } from "@starknet-react/core";
+import { Account } from "starknet";
 
 export const useMiners = () => {
   const {
@@ -17,14 +19,13 @@ export const useMiners = () => {
       client,
       contractComponents: { Miner, Mine },
     },
-    account,
   } = useDojo();
-
+  const { account } = useAccount();
   const { setup } = useDojo();
 
   const myMiners = useEntityQuery([
     Has(Miner),
-    HasValue(Miner, { owner: BigInt(account.account?.address || "0") }),
+    HasValue(Miner, { owner: BigInt(account?.address || "0") }),
   ]);
 
   const allMiners = useMemo(() => {
