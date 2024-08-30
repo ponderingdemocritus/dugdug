@@ -10,10 +10,11 @@ export const getConnectors = (): { connectors: Connector[] } => {
     "actions"
   )?.address;
 
-  const paymaster: any = { caller: "0x414e595f43414c4c4552" };
+  const paymaster = { caller: "0x414e595f43414c4c4552" };
   const options = { paymaster };
 
   const cartridge = new CartridgeConnector({
+    paymaster,
     policies: [
       {
         target: actions,
@@ -39,7 +40,6 @@ export const getConnectors = (): { connectors: Connector[] } => {
         target: actions,
         method: "start_mining",
       },
-      paymaster,
     ],
   }) as never as Connector;
   return { connectors: [cartridge] };
