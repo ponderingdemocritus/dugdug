@@ -41,8 +41,9 @@ export const useBalances = () => {
 
   const parseAmount = (amount: string | undefined) => {
     if (!amount) return "0";
-    // Convert hexadecimal to decimal
-    return BigInt(`0x${amount}`).toString();
+    // Convert hexadecimal to decimal and divide by 10^18
+    const bigIntAmount = BigInt(`0x${amount}`);
+    return (bigIntAmount / BigInt(10 ** 18)).toString();
   };
 
   const readableAxeBalance = useMemo(() => {

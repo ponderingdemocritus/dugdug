@@ -1,6 +1,6 @@
 kind = "DojoContract"
-class_hash = "0x78e0479ee03948082b3125189f6ee65d621d0fa33b5361fd42ecb220159179"
-original_class_hash = "0x78e0479ee03948082b3125189f6ee65d621d0fa33b5361fd42ecb220159179"
+class_hash = "0x5f0722cb90e95de56bc3be45a976d3acc4906af98bdb94cc0058cc7ebb1a13"
+original_class_hash = "0x5f0722cb90e95de56bc3be45a976d3acc4906af98bdb94cc0058cc7ebb1a13"
 base_class_hash = "0x0"
 abi = "manifests/release/base/abis/contracts/dugdug-actions-3a561b6b.json"
 reads = []

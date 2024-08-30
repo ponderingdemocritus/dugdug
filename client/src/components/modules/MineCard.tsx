@@ -101,8 +101,25 @@ export const MineCard = ({
     });
   }, [allMiners, mineClass, mine]);
 
+  const shakeStrength = useMemo(() => {
+    if (
+      mineClass.mine.current_status.toString() === "Collapsed" ||
+      mineClass.mine.current_status.toString() === "Mined"
+    ) {
+      return "";
+    } else if (mineClass.totalMiners() > 0) {
+      return "shake-small";
+    } else if (mineClass.totalMiners() > 5) {
+      return "shake-medium";
+    } else if (mineClass.totalMiners() > 10) {
+      return "shake-large";
+    } else {
+      return "";
+    }
+  }, []);
+
   return (
-    <Card>
+    <Card className={`${shakeStrength}`}>
       {loading ? (
         <CardContent className="self-center my-8">
           Mine being discovered...
@@ -122,7 +139,9 @@ export const MineCard = ({
                 {mineClass.calculateMineStatus().collapseChance} %
               </span>
             </div>
-            {imageUrl && <img className="object-fill" src={imageUrl} alt="" />}
+            {imageUrl && (
+              <img className="object-fill rounded-t-xl" src={imageUrl} alt="" />
+            )}
             <div className="absolute bottom-4 right-4 flex -space-x-4 hover:-space-x-2 ">
               {allMiners
                 .filter(

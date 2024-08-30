@@ -123,30 +123,6 @@ function App() {
       </div>
       <div className="flex flex-col h-full">
         <header className="flex h-14 items-center gap-4 border-b bg-muted/40 px-4 lg:h-[60px] lg:px-6 fixed top-0 w-full z-10 md:relative md:top-auto md:w-auto">
-          {/* <Sheet>
-            <SheetTrigger asChild>
-              <Button
-                variant="outline"
-                size="icon"
-                className="shrink-0 md:hidden"
-              >
-                <Menu className="h-5 w-5" />
-                <span className="sr-only">Toggle navigation menu</span>
-              </Button>
-            </SheetTrigger>
-            <SheetContent side="left" className="flex flex-col">
-              <nav className="grid gap-2 text-lg font-medium">
-                <Link
-                  to="#"
-                  className="flex items-center gap-2 text-lg font-semibold"
-                >
-                  <Package2 className="h-6 w-6" />
-                  <span className="sr-only">Acme Inc</span>
-                </Link>
-                {renderLinks(linksConfig)}
-              </nav>
-            </SheetContent>
-          </Sheet> */}
           <Button
             onClick={async () => {
               setIsLoading(true);

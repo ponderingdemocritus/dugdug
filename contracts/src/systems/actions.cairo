@@ -72,7 +72,8 @@ mod actions {
             set!(world, (MinerTrait::new(world)));
         }
         fn buy_axe(ref world: IWorldDispatcher, qty: u8) {
-            get_axe(world).mint_from(get_caller_address(), qty.into());
+            let q: u256 = qty.into() * 1000000000000000000;
+            get_axe(world).mint_from(get_caller_address(), q.into());
         }
         fn start_mining(
             ref world: IWorldDispatcher, miner_id: u32, mine_id: u32, choice: MinerChoice
@@ -80,7 +81,7 @@ mod actions {
             let mut miner = get!(world, (miner_id), Miner);
             let mut mine = get!(world, (mine_id), Mine);
 
-            get_axe(world).burn_from(get_caller_address(), 1.into());
+            get_axe(world).burn_from(get_caller_address(), (1 * 1000000000000000000).into());
 
             // assert not already mining or in mine
             assert(miner.mine_id == 0, 'Miner is already in mine');
@@ -140,7 +141,9 @@ mod actions {
                                     0
                                 },
                             };
-                            get_mineral(world).mint_from(get_caller_address(), miner_payout.into());
+
+                            let payout: u256 = miner_payout * 1000000000000000000;
+                            get_mineral(world).mint_from(get_caller_address(), payout.into());
 
                             miner.xp += 5;
                             miner.status = MinerStatus::Idle;
