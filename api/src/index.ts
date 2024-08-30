@@ -1,7 +1,7 @@
 import { Hono } from "hono";
-import { Database } from "sqlite3";
 import * as fal from "@fal-ai/serverless-client";
 import { S3Client, PutObjectCommand } from "@aws-sdk/client-s3";
+import { Client } from "pg";
 
 const s3Client = new S3Client({
   region: "ap-northeast-1",
@@ -16,16 +16,23 @@ fal.config({
 });
 
 const app = new Hono();
-const db = new Database("images.db");
+const db = new Client({
+  connectionString: process.env.DATABASE_URL,
+  ssl: {
+    rejectUnauthorized: false,
+  },
+});
+
+db.connect();
 
 // Initialize the database
-db.run(`CREATE TABLE IF NOT EXISTS images (
+db.query(`CREATE TABLE IF NOT EXISTS images (
   seed TEXT PRIMARY KEY,
   image_name TEXT
 )`);
 
 app.get("/", (c) => {
-  return c.text("Hello Hono!");
+  return c.text("dugdug");
 });
 
 app.get("/image/:seed/:prompt", async (c) => {
@@ -33,12 +40,13 @@ app.get("/image/:seed/:prompt", async (c) => {
   const prompt = c.req.param("prompt");
 
   // Check if the image exists in the database
-  const existingImageName = await new Promise((resolve) => {
-    db.get(
-      "SELECT image_name FROM images WHERE seed = ?",
+  const existingImageName = await new Promise((resolve, reject) => {
+    db.query(
+      "SELECT image_name FROM images WHERE seed = $1",
       [seed],
-      (err, row: any) => {
-        resolve(row ? row.image_name : null);
+      (err, res) => {
+        if (err) reject(err);
+        resolve(res.rows.length ? res.rows[0].image_name : null);
       }
     );
   });
@@ -86,8 +94,8 @@ app.get("/image/:seed/:prompt", async (c) => {
   );
 
   await new Promise((resolve, reject) => {
-    db.run(
-      "INSERT INTO images (seed, image_name) VALUES (?, ?)",
+    db.query(
+      "INSERT INTO images (seed, image_name) VALUES ($1, $2)",
       [seed, s3Key],
       (err) => {
         if (err) reject(err);
