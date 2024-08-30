@@ -32,7 +32,7 @@ export const MinerCard = ({
             <img
               className={`w-16 h-16 rounded ${
                 isMining ? "animate-bounce" : ""
-              } `}
+              } ${!miner.isAlive() ? "grayscale" : ""}`}
               src={miner.avatar()}
               alt=""
             />

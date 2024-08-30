@@ -8,6 +8,8 @@ import { Card, CardContent } from "../ui/card";
 import { useAccount } from "@starknet-react/core";
 import { Account } from "starknet";
 
+import Tombstone from "@/components/icons/tombstone.svg?react";
+
 export const Modal = () => {
   const setModal = useUIStore((state) => state.setModal);
   const modalContent = useUIStore((state) => state.modalContent);
@@ -75,28 +77,16 @@ export const Modal = () => {
                     <div className="relative mx-auto mt-4">
                       <img
                         className={`w-14 h-14 rounded-full border transition-all duration-200 border-white/10 ${
-                          miner.minerClass.status() === "Alive" &&
-                          "animate-bounce"
+                          miner.minerClass.status() === "Alive"
+                            ? "animate-bounce"
+                            : "grayscale"
                         }`}
                         src={miner.minerClass.avatar()}
                         alt=""
                       />
                       {miner.minerClass.status() === "Dead" && (
                         <div className="absolute inset-0 flex items-center justify-center w-14 h-14">
-                          <svg
-                            className="w-6 h-6 text-white"
-                            fill="none"
-                            stroke="currentColor"
-                            viewBox="0 0 24 24"
-                            xmlns="http://www.w3.org/2000/svg"
-                          >
-                            <path
-                              strokeLinecap="round"
-                              strokeLinejoin="round"
-                              strokeWidth="2"
-                              d="M6 18L18 6M6 6l12 12"
-                            ></path>
-                          </svg>
+                          <Tombstone />
                         </div>
                       )}
                     </div>

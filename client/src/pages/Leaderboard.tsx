@@ -4,6 +4,7 @@ import { useEntityQuery } from "@dojoengine/react";
 import { Has, HasValue, getComponentValue } from "@dojoengine/recs";
 import { useMemo, useState } from "react";
 import { num } from "starknet";
+import { useAccount } from "@starknet-react/core";
 
 function Leaderboard() {
   const {
@@ -16,6 +17,8 @@ function Leaderboard() {
     Has(Mine),
     HasValue(Mine, { current_status: "Collapsed" }),
   ]);
+
+  const { account } = useAccount();
 
   const collapsedMines = useMemo(() => {
     const mineClasses = killCount.map((mine) => {
@@ -56,7 +59,9 @@ function Leaderboard() {
             <tr key={mine.lastMiner} className="hover:bg-gray-900">
               <td className="py-2 px-4 border-b">{index + 1}</td>
               <td className="py-2 px-4 border-b">
-                {num.toHexString(mine.lastMiner).slice(-8)}
+                {BigInt(account?.address || "0") === BigInt(mine.lastMiner)
+                  ? "You"
+                  : num.toHexString(mine.lastMiner).slice(-8)}
               </td>
               <td className="py-2 px-4 border-b">{mine.deadMiners}</td>
             </tr>
