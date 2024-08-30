@@ -1,0 +1,7 @@
+{
+  "cairo1.enableLanguageServer": true,
+  "cairo1.enableScarb": true,
+  "cairo1.languageServerPath": "/Users/os/.asdf/shims/scarb-cairo-language-server",
+  "cairo1.preferScarbLanguageServer": false,
+  "cairo1.scarbPath": "/Users/os/.asdf/shims/scarb"
+}

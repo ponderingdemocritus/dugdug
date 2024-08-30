@@ -1,0 +1,32 @@
+kind = "DojoModel"
+class_hash = "0x1c6c80a3bcc3cabce57054f44fe3b9a823d13372157fc28702db05b1db13bd2"
+original_class_hash = "0x1c6c80a3bcc3cabce57054f44fe3b9a823d13372157fc28702db05b1db13bd2"
+abi = "manifests/dev/base/abis/models/dugdug-ERC20MetadataModel-33e77978.json"
+tag = "dugdug-ERC20MetadataModel"
+qualified_path = "origami_token::components::token::erc20::erc20_metadata::erc_20_metadata_model"
+manifest_name = "dugdug-ERC20MetadataModel-33e77978"
+
+[[members]]
+name = "token"
+type = "ContractAddress"
+key = true
+
+[[members]]
+name = "name"
+type = "ByteArray"
+key = false
+
+[[members]]
+name = "symbol"
+type = "ByteArray"
+key = false
+
+[[members]]
+name = "decimals"
+type = "u8"
+key = false
+
+[[members]]
+name = "total_supply"
+type = "u256"
+key = false

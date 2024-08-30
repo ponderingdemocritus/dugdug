@@ -1,0 +1,1 @@
+const TIME_BETWEEN_CHECKS: u64 = 900;

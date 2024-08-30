@@ -1,0 +1,15 @@
+kind = "DojoContract"
+class_hash = "0xf4608917128ca9c58395ac2317df3057293b058765387ece22b2ea8dc8e7e1"
+original_class_hash = "0xf4608917128ca9c58395ac2317df3057293b058765387ece22b2ea8dc8e7e1"
+base_class_hash = "0x0"
+abi = "manifests/dev/base/abis/contracts/dugdug-Axe-35116bd0.json"
+reads = []
+writes = []
+init_calldata = []
+tag = "dugdug-Axe"
+systems = [
+    "initializer",
+    "mint_from",
+    "burn_from",
+]
+manifest_name = "dugdug-Axe-35116bd0"

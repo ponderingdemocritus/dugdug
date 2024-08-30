@@ -1,0 +1,22 @@
+kind = "DojoModel"
+class_hash = "0x7380547bc745d1603929e63921de403a9b6e3475598984afb5d96f141c6d8fa"
+original_class_hash = "0x7380547bc745d1603929e63921de403a9b6e3475598984afb5d96f141c6d8fa"
+abi = "manifests/dev/base/abis/models/dugdug-MinerSpawned-4dd46768.json"
+tag = "dugdug-MinerSpawned"
+qualified_path = "dugdug::events::miner_spawned"
+manifest_name = "dugdug-MinerSpawned-4dd46768"
+
+[[members]]
+name = "id"
+type = "u32"
+key = true
+
+[[members]]
+name = "time"
+type = "u64"
+key = false
+
+[[members]]
+name = "miner"
+type = "Miner"
+key = false

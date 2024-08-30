@@ -1,0 +1,17 @@
+kind = "DojoModel"
+class_hash = "0x719b252d6fa2e664cfe8c08cdd2018fff8c0573dc1731e8f628e16ad0f29f4b"
+original_class_hash = "0x719b252d6fa2e664cfe8c08cdd2018fff8c0573dc1731e8f628e16ad0f29f4b"
+abi = "manifests/dev/base/abis/models/dugdug-InitializableModel-4681648a.json"
+tag = "dugdug-InitializableModel"
+qualified_path = "origami_token::components::security::initializable::initializable_model"
+manifest_name = "dugdug-InitializableModel-4681648a"
+
+[[members]]
+name = "token"
+type = "ContractAddress"
+key = true
+
+[[members]]
+name = "initialized"
+type = "bool"
+key = false

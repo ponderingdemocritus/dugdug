@@ -1,0 +1,15 @@
+kind = "DojoContract"
+class_hash = "0x5cd78de3f52ec0cc54de20c477f13b5156f77b8f679f56d71cec6bdbf530562"
+original_class_hash = "0x5cd78de3f52ec0cc54de20c477f13b5156f77b8f679f56d71cec6bdbf530562"
+base_class_hash = "0x0"
+abi = "manifests/dev/base/abis/contracts/dugdug-Mineral-4088245c.json"
+reads = []
+writes = []
+init_calldata = []
+tag = "dugdug-Mineral"
+systems = [
+    "initializer",
+    "mint_from",
+    "burn_from",
+]
+manifest_name = "dugdug-Mineral-4088245c"

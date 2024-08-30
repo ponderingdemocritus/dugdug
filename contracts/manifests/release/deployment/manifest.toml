@@ -1,0 +1,423 @@
+[world]
+kind = "WorldContract"
+class_hash = "0xa349b743d361ce4567361475a89b84a386bb383448c6926954e5fe0b525597"
+original_class_hash = "0xa349b743d361ce4567361475a89b84a386bb383448c6926954e5fe0b525597"
+abi = "manifests/release/deployment/abis/dojo-world.json"
+address = "0x47add0e67efde19c98bf4630732c19b84b0a8d7a9c94f6f99ca9d673832ede0"
+transaction_hash = "0x934391ba20aaf6915fe447a3ef067b8baa20141c6f1122b7f3bac275b379f3"
+seed = "dugdug-3"
+manifest_name = "dojo-world"
+
+[world.metadata]
+profile_name = "release"
+rpc_url = "https://api.cartridge.gg/x/starknet/sepolia"
+
+[base]
+kind = "Class"
+class_hash = "0x2427dd10a58850ac9a5ca6ce04b7771b05330fd18f2e481831ad903b969e6b2"
+original_class_hash = "0x2427dd10a58850ac9a5ca6ce04b7771b05330fd18f2e481831ad903b969e6b2"
+abi = "manifests/release/deployment/abis/dojo-base.json"
+tag = "dojo-base"
+manifest_name = "dojo-base"
+
+[[contracts]]
+kind = "DojoContract"
+address = "0x73760e52e8891eb7c99965f1c95e5604de31f5ba253180cf007466ca646795a"
+class_hash = "0xf4608917128ca9c58395ac2317df3057293b058765387ece22b2ea8dc8e7e1"
+original_class_hash = "0xf4608917128ca9c58395ac2317df3057293b058765387ece22b2ea8dc8e7e1"
+base_class_hash = "0x2427dd10a58850ac9a5ca6ce04b7771b05330fd18f2e481831ad903b969e6b2"
+abi = "manifests/release/deployment/abis/contracts/dugdug-Axe-35116bd0.json"
+reads = []
+writes = [
+    "dugdug-ERC20MetadataModel",
+    "dugdug-ERC20BalanceModel",
+    "dugdug-ERC20AllowanceModel",
+    "dugdug-ERC20BridgeableModel",
+    "dugdug-InitializableModel",
+]
+init_calldata = []
+tag = "dugdug-Axe"
+systems = [
+    "initializer",
+    "mint_from",
+    "burn_from",
+]
+manifest_name = "dugdug-Axe-35116bd0"
+
+[[contracts]]
+kind = "DojoContract"
+address = "0x231697affc64625e4c091b4e4e6bb68a116bbdb83434beb5b096d1b08ea7ad2"
+class_hash = "0x5cd78de3f52ec0cc54de20c477f13b5156f77b8f679f56d71cec6bdbf530562"
+original_class_hash = "0x5cd78de3f52ec0cc54de20c477f13b5156f77b8f679f56d71cec6bdbf530562"
+base_class_hash = "0x2427dd10a58850ac9a5ca6ce04b7771b05330fd18f2e481831ad903b969e6b2"
+abi = "manifests/release/deployment/abis/contracts/dugdug-Mineral-4088245c.json"
+reads = []
+writes = [
+    "dugdug-ERC20MetadataModel",
+    "dugdug-ERC20BalanceModel",
+    "dugdug-ERC20AllowanceModel",
+    "dugdug-ERC20BridgeableModel",
+    "dugdug-InitializableModel",
+]
+init_calldata = []
+tag = "dugdug-Mineral"
+systems = [
+    "initializer",
+    "mint_from",
+    "burn_from",
+]
+manifest_name = "dugdug-Mineral-4088245c"
+
+[[contracts]]
+kind = "DojoContract"
+address = "0x6cc8fa971646eaa21159eba70ef17eed8e91aee24031a1957bda13a39bc3ee6"
+class_hash = "0x16e1f2ad13c037c4b483496f27935bc4c024f529083dd0a26b41cc6276a7c47"
+original_class_hash = "0x16e1f2ad13c037c4b483496f27935bc4c024f529083dd0a26b41cc6276a7c47"
+base_class_hash = "0x2427dd10a58850ac9a5ca6ce04b7771b05330fd18f2e481831ad903b969e6b2"
+abi = "manifests/release/deployment/abis/contracts/dugdug-actions-3a561b6b.json"
+reads = []
+writes = [
+    "dugdug-Miner",
+    "dugdug-Mine",
+    "dugdug-ERC20MetadataModel",
+    "dugdug-ERC20BalanceModel",
+    "dugdug-ERC20AllowanceModel",
+    "dugdug-ERC20BridgeableModel",
+    "dugdug-InitializableModel",
+]
+init_calldata = []
+tag = "dugdug-actions"
+systems = [
+    "spawn_miner",
+    "buy_axe",
+    "start_mining",
+    "check_mining",
+    "leave_mine",
+    "create_mine",
+]
+manifest_name = "dugdug-actions-3a561b6b"
+
+[[models]]
+kind = "DojoModel"
+class_hash = "0x23f63e316921e339f9716b6674f2516981ec2a78caa8a168b7f63ad037a4b19"
+original_class_hash = "0x23f63e316921e339f9716b6674f2516981ec2a78caa8a168b7f63ad037a4b19"
+abi = "manifests/release/deployment/abis/models/dugdug-ERC20AllowanceModel-32067bc6.json"
+tag = "dugdug-ERC20AllowanceModel"
+qualified_path = "origami_token::components::token::erc20::erc20_allowance::erc_20_allowance_model"
+manifest_name = "dugdug-ERC20AllowanceModel-32067bc6"
+
+[[models.members]]
+name = "token"
+type = "ContractAddress"
+key = true
+
+[[models.members]]
+name = "owner"
+type = "ContractAddress"
+key = true
+
+[[models.members]]
+name = "spender"
+type = "ContractAddress"
+key = true
+
+[[models.members]]
+name = "amount"
+type = "u256"
+key = false
+
+[[models]]
+kind = "DojoModel"
+class_hash = "0x71008e5ba49adb3d693912ab2358266b65e6c71cdbc67a2bc5fc616ddf6f64b"
+original_class_hash = "0x71008e5ba49adb3d693912ab2358266b65e6c71cdbc67a2bc5fc616ddf6f64b"
+abi = "manifests/release/deployment/abis/models/dugdug-ERC20BalanceModel-168c1bfc.json"
+tag = "dugdug-ERC20BalanceModel"
+qualified_path = "origami_token::components::token::erc20::erc20_balance::erc_20_balance_model"
+manifest_name = "dugdug-ERC20BalanceModel-168c1bfc"
+
+[[models.members]]
+name = "token"
+type = "ContractAddress"
+key = true
+
+[[models.members]]
+name = "account"
+type = "ContractAddress"
+key = true
+
+[[models.members]]
+name = "amount"
+type = "u256"
+key = false
+
+[[models]]
+kind = "DojoModel"
+class_hash = "0x1d83e6ddb8065b7fc080e9c99ec88b2409cbea751fceea9309938b16c762caf"
+original_class_hash = "0x1d83e6ddb8065b7fc080e9c99ec88b2409cbea751fceea9309938b16c762caf"
+abi = "manifests/release/deployment/abis/models/dugdug-ERC20BridgeableModel-5e4d03b4.json"
+tag = "dugdug-ERC20BridgeableModel"
+qualified_path = "dugdug::tokens::AXE::erc_20_bridgeable_model"
+manifest_name = "dugdug-ERC20BridgeableModel-5e4d03b4"
+
+[[models.members]]
+name = "token"
+type = "ContractAddress"
+key = true
+
+[[models.members]]
+name = "l2_bridge_address"
+type = "ContractAddress"
+key = false
+
+[[models]]
+kind = "DojoModel"
+class_hash = "0x1c6c80a3bcc3cabce57054f44fe3b9a823d13372157fc28702db05b1db13bd2"
+original_class_hash = "0x1c6c80a3bcc3cabce57054f44fe3b9a823d13372157fc28702db05b1db13bd2"
+abi = "manifests/release/deployment/abis/models/dugdug-ERC20MetadataModel-33e77978.json"
+tag = "dugdug-ERC20MetadataModel"
+qualified_path = "origami_token::components::token::erc20::erc20_metadata::erc_20_metadata_model"
+manifest_name = "dugdug-ERC20MetadataModel-33e77978"
+
+[[models.members]]
+name = "token"
+type = "ContractAddress"
+key = true
+
+[[models.members]]
+name = "name"
+type = "ByteArray"
+key = false
+
+[[models.members]]
+name = "symbol"
+type = "ByteArray"
+key = false
+
+[[models.members]]
+name = "decimals"
+type = "u8"
+key = false
+
+[[models.members]]
+name = "total_supply"
+type = "u256"
+key = false
+
+[[models]]
+kind = "DojoModel"
+class_hash = "0x719b252d6fa2e664cfe8c08cdd2018fff8c0573dc1731e8f628e16ad0f29f4b"
+original_class_hash = "0x719b252d6fa2e664cfe8c08cdd2018fff8c0573dc1731e8f628e16ad0f29f4b"
+abi = "manifests/release/deployment/abis/models/dugdug-InitializableModel-4681648a.json"
+tag = "dugdug-InitializableModel"
+qualified_path = "origami_token::components::security::initializable::initializable_model"
+manifest_name = "dugdug-InitializableModel-4681648a"
+
+[[models.members]]
+name = "token"
+type = "ContractAddress"
+key = true
+
+[[models.members]]
+name = "initialized"
+type = "bool"
+key = false
+
+[[models]]
+kind = "DojoModel"
+class_hash = "0x5a5e67896b3e178ad505c62c62bb61fdd80607cc27af6d920ac1e3f62a5b050"
+original_class_hash = "0x5a5e67896b3e178ad505c62c62bb61fdd80607cc27af6d920ac1e3f62a5b050"
+abi = "manifests/release/deployment/abis/models/dugdug-Mine-4f01e10d.json"
+tag = "dugdug-Mine"
+qualified_path = "dugdug::models::mine"
+manifest_name = "dugdug-Mine-4f01e10d"
+
+[[models.members]]
+name = "id"
+type = "u32"
+key = true
+
+[[models.members]]
+name = "current_status"
+type = "MineStatus"
+key = false
+
+[[models.members]]
+name = "mining_state"
+type = "u32"
+key = false
+
+[[models.members]]
+name = "selfless_miners"
+type = "u32"
+key = false
+
+[[models.members]]
+name = "selfish_miners"
+type = "u32"
+key = false
+
+[[models.members]]
+name = "stability"
+type = "u32"
+key = false
+
+[[models.members]]
+name = "efficiency"
+type = "u32"
+key = false
+
+[[models.members]]
+name = "seed"
+type = "u128"
+key = false
+
+[[models.members]]
+name = "mineral_payout"
+type = "u64"
+key = false
+
+[[models.members]]
+name = "last_miner"
+type = "ContractAddress"
+key = false
+
+[[models]]
+kind = "DojoModel"
+class_hash = "0x50f1db7c94f8ae69569496bf28a4a0f0c6db74d3aa700b88b88664aad4cfe0c"
+original_class_hash = "0x50f1db7c94f8ae69569496bf28a4a0f0c6db74d3aa700b88b88664aad4cfe0c"
+abi = "manifests/release/deployment/abis/models/dugdug-MineUpdate-1a1d7f54.json"
+tag = "dugdug-MineUpdate"
+qualified_path = "dugdug::events::mine_update"
+manifest_name = "dugdug-MineUpdate-1a1d7f54"
+
+[[models.members]]
+name = "id"
+type = "u32"
+key = true
+
+[[models.members]]
+name = "time"
+type = "u64"
+key = false
+
+[[models.members]]
+name = "mine"
+type = "Mine"
+key = false
+
+[[models]]
+kind = "DojoModel"
+class_hash = "0x5dbdd394816a3ea86c6a637bba0824c13a763c06c1848a4c96e4a53f123afaf"
+original_class_hash = "0x5dbdd394816a3ea86c6a637bba0824c13a763c06c1848a4c96e4a53f123afaf"
+abi = "manifests/release/deployment/abis/models/dugdug-Miner-73834205.json"
+tag = "dugdug-Miner"
+qualified_path = "dugdug::models::miner"
+manifest_name = "dugdug-Miner-73834205"
+
+[[models.members]]
+name = "id"
+type = "u32"
+key = true
+
+[[models.members]]
+name = "owner"
+type = "ContractAddress"
+key = false
+
+[[models.members]]
+name = "xp"
+type = "u32"
+key = false
+
+[[models.members]]
+name = "health"
+type = "MinerHealth"
+key = false
+
+[[models.members]]
+name = "gear_level"
+type = "GearLevel"
+key = false
+
+[[models.members]]
+name = "status"
+type = "MinerStatus"
+key = false
+
+[[models.members]]
+name = "choice"
+type = "MinerChoice"
+key = false
+
+[[models.members]]
+name = "last_checkup"
+type = "u64"
+key = false
+
+[[models.members]]
+name = "entered_mine"
+type = "u64"
+key = false
+
+[[models.members]]
+name = "mine_id"
+type = "u32"
+key = false
+
+[[models.members]]
+name = "seed"
+type = "u128"
+key = false
+
+[[models.members]]
+name = "birthtime"
+type = "u64"
+key = false
+
+[[models]]
+kind = "DojoModel"
+class_hash = "0x7380547bc745d1603929e63921de403a9b6e3475598984afb5d96f141c6d8fa"
+original_class_hash = "0x7380547bc745d1603929e63921de403a9b6e3475598984afb5d96f141c6d8fa"
+abi = "manifests/release/deployment/abis/models/dugdug-MinerSpawned-4dd46768.json"
+tag = "dugdug-MinerSpawned"
+qualified_path = "dugdug::events::miner_spawned"
+manifest_name = "dugdug-MinerSpawned-4dd46768"
+
+[[models.members]]
+name = "id"
+type = "u32"
+key = true
+
+[[models.members]]
+name = "time"
+type = "u64"
+key = false
+
+[[models.members]]
+name = "miner"
+type = "Miner"
+key = false
+
+[[models]]
+kind = "DojoModel"
+class_hash = "0x3957a2e804ec76d1bdd5c1d58388260f6824b8234f29c31770469b13e8ea169"
+original_class_hash = "0x3957a2e804ec76d1bdd5c1d58388260f6824b8234f29c31770469b13e8ea169"
+abi = "manifests/release/deployment/abis/models/dugdug-MineralFound-31a5ca33.json"
+tag = "dugdug-MineralFound"
+qualified_path = "dugdug::events::mineral_found"
+manifest_name = "dugdug-MineralFound-31a5ca33"
+
+[[models.members]]
+name = "id"
+type = "u32"
+key = true
+
+[[models.members]]
+name = "time"
+type = "u64"
+key = false
+
+[[models.members]]
+name = "mineral"
+type = "u32"
+key = false

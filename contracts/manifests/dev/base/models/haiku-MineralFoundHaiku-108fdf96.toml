@@ -1,0 +1,27 @@
+kind = "DojoModel"
+class_hash = "0x50234f7289b557f13786ce312d672f9e6ef80fa5a13bd3196a7c69b069d4c2b"
+original_class_hash = "0x50234f7289b557f13786ce312d672f9e6ef80fa5a13bd3196a7c69b069d4c2b"
+abi = "manifests/dev/base/abis/models/haiku-MineralFoundHaiku-108fdf96.json"
+tag = "haiku-MineralFoundHaiku"
+qualified_path = "dugdug::events::mineral_found_haiku"
+manifest_name = "haiku-MineralFoundHaiku-108fdf96"
+
+[[members]]
+name = "id"
+type = "u32"
+key = true
+
+[[members]]
+name = "timestamp"
+type = "u64"
+key = false
+
+[[members]]
+name = "seed"
+type = "u128"
+key = false
+
+[[members]]
+name = "minerals"
+type = "u64"
+key = false

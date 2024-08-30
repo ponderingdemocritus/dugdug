@@ -1,0 +1,8 @@
+tag = "dugdug-Axe"
+writes = [
+    "dugdug-ERC20MetadataModel",
+    "dugdug-ERC20BalanceModel",
+    "dugdug-ERC20AllowanceModel",
+    "dugdug-ERC20BridgeableModel",
+    "dugdug-InitializableModel",
+]
