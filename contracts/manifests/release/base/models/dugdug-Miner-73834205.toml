@@ -1,0 +1,67 @@
+kind = "DojoModel"
+class_hash = "0x5dbdd394816a3ea86c6a637bba0824c13a763c06c1848a4c96e4a53f123afaf"
+original_class_hash = "0x5dbdd394816a3ea86c6a637bba0824c13a763c06c1848a4c96e4a53f123afaf"
+abi = "manifests/release/base/abis/models/dugdug-Miner-73834205.json"
+tag = "dugdug-Miner"
+qualified_path = "dugdug::models::miner"
+manifest_name = "dugdug-Miner-73834205"
+
+[[members]]
+name = "id"
+type = "u32"
+key = true
+
+[[members]]
+name = "owner"
+type = "ContractAddress"
+key = false
+
+[[members]]
+name = "xp"
+type = "u32"
+key = false
+
+[[members]]
+name = "health"
+type = "MinerHealth"
+key = false
+
+[[members]]
+name = "gear_level"
+type = "GearLevel"
+key = false
+
+[[members]]
+name = "status"
+type = "MinerStatus"
+key = false
+
+[[members]]
+name = "choice"
+type = "MinerChoice"
+key = false
+
+[[members]]
+name = "last_checkup"
+type = "u64"
+key = false
+
+[[members]]
+name = "entered_mine"
+type = "u64"
+key = false
+
+[[members]]
+name = "mine_id"
+type = "u32"
+key = false
+
+[[members]]
+name = "seed"
+type = "u128"
+key = false
+
+[[members]]
+name = "birthtime"
+type = "u64"
+key = false

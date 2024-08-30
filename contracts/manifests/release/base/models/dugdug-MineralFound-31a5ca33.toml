@@ -1,0 +1,22 @@
+kind = "DojoModel"
+class_hash = "0x3957a2e804ec76d1bdd5c1d58388260f6824b8234f29c31770469b13e8ea169"
+original_class_hash = "0x3957a2e804ec76d1bdd5c1d58388260f6824b8234f29c31770469b13e8ea169"
+abi = "manifests/release/base/abis/models/dugdug-MineralFound-31a5ca33.json"
+tag = "dugdug-MineralFound"
+qualified_path = "dugdug::events::mineral_found"
+manifest_name = "dugdug-MineralFound-31a5ca33"
+
+[[members]]
+name = "id"
+type = "u32"
+key = true
+
+[[members]]
+name = "time"
+type = "u64"
+key = false
+
+[[members]]
+name = "mineral"
+type = "u32"
+key = false

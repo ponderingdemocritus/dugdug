@@ -1,0 +1,18 @@
+kind = "DojoContract"
+class_hash = "0x78e0479ee03948082b3125189f6ee65d621d0fa33b5361fd42ecb220159179"
+original_class_hash = "0x78e0479ee03948082b3125189f6ee65d621d0fa33b5361fd42ecb220159179"
+base_class_hash = "0x0"
+abi = "manifests/release/base/abis/contracts/dugdug-actions-3a561b6b.json"
+reads = []
+writes = []
+init_calldata = []
+tag = "dugdug-actions"
+systems = [
+    "spawn_miner",
+    "buy_axe",
+    "start_mining",
+    "check_mining",
+    "leave_mine",
+    "create_mine",
+]
+manifest_name = "dugdug-actions-3a561b6b"

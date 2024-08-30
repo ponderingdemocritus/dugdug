@@ -7,7 +7,7 @@ import svgr from "vite-plugin-svgr";
 import mkcert from "vite-plugin-mkcert";
 
 export default defineConfig({
-  plugins: [react(), wasm(), topLevelAwait(), svgr()],
+  plugins: [mkcert(), react(), wasm(), topLevelAwait(), svgr()],
   resolve: {
     alias: {
       "@": path.resolve(__dirname, "./src"),

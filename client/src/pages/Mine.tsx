@@ -5,6 +5,8 @@ import { Has, getComponentValue } from "@dojoengine/recs";
 import { Button } from "@/components/ui/button";
 import { MineCard } from "@/components/modules/MineCard";
 import { ToggleGroup, ToggleGroupItem } from "@/components/ui/toggle-group";
+import { useAccount } from "@starknet-react/core";
+import { Account } from "starknet";
 
 function Mine() {
   const {
@@ -12,10 +14,11 @@ function Mine() {
       client,
       contractComponents: { Mine },
     },
-    account,
   } = useDojo();
 
   const mines = useEntityQuery([Has(Mine)]);
+
+  const { account } = useAccount();
 
   const [filter, setFilter] = useState<"Open" | "Mined" | "Collapsed">("Open");
 
@@ -37,7 +40,7 @@ function Mine() {
 
       <Button
         onClick={async () =>
-          await client.actions.create_mine({ account: account.account })
+          await client.actions.create_mine({ account: account as Account })
         }
       >
         Create mine

@@ -1,0 +1,27 @@
+kind = "DojoModel"
+class_hash = "0x23f63e316921e339f9716b6674f2516981ec2a78caa8a168b7f63ad037a4b19"
+original_class_hash = "0x23f63e316921e339f9716b6674f2516981ec2a78caa8a168b7f63ad037a4b19"
+abi = "manifests/release/base/abis/models/dugdug-ERC20AllowanceModel-32067bc6.json"
+tag = "dugdug-ERC20AllowanceModel"
+qualified_path = "origami_token::components::token::erc20::erc20_allowance::erc_20_allowance_model"
+manifest_name = "dugdug-ERC20AllowanceModel-32067bc6"
+
+[[members]]
+name = "token"
+type = "ContractAddress"
+key = true
+
+[[members]]
+name = "owner"
+type = "ContractAddress"
+key = true
+
+[[members]]
+name = "spender"
+type = "ContractAddress"
+key = true
+
+[[members]]
+name = "amount"
+type = "u256"
+key = false

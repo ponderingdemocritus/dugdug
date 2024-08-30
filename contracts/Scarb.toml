@@ -15,7 +15,6 @@ origami_token = { git = "https://github.com/dojoengine/origami", tag = "v1.0.0-a
 alexandria_math = { git = "https://github.com/keep-starknet-strange/alexandria.git" }
 haiku_event = { git = "https://github.com/edisontim/haiku" }
 
-
 [[target.dojo]]
 build-external-contracts = [
     "haiku_event::PromptMessage",

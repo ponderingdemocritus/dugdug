@@ -41,9 +41,10 @@ import useImage from "@/hooks/useImage";
 import { Badge } from "../ui/badge";
 import { useUiSounds } from "@/hooks/useSound";
 import { useBalances } from "@/hooks/useBalances";
+import { useAccount } from "@starknet-react/core";
 
 import Axe from "@/components/icons/axe.svg?react";
-import { num, shortString } from "starknet";
+import { Account, num, shortString } from "starknet";
 
 export const MineCard = ({
   mine,
@@ -52,7 +53,6 @@ export const MineCard = ({
 }) => {
   const {
     setup: { client },
-    account,
   } = useDojo();
 
   const mineClass = new MineClass(mine);
@@ -60,6 +60,8 @@ export const MineCard = ({
   const { play } = useUiSounds();
 
   const { allMiners } = useMiners();
+
+  const { account } = useAccount();
 
   const [choice, setChoice] = useState(false);
 
@@ -246,7 +248,7 @@ export const MineCard = ({
                                         setTxLoading(true);
                                         play();
                                         await client.actions.start_mining({
-                                          account: account.account,
+                                          account: account as Account,
                                           mine_id: mine.id,
                                           miner_id:
                                             miner.minerClass.miner.id || 0,
@@ -265,7 +267,7 @@ export const MineCard = ({
                                   <Button
                                     onClick={() =>
                                       client.actions.buy_axe({
-                                        account: account.account,
+                                        account: account as Account,
                                         qty: 10,
                                       })
                                     }
@@ -284,7 +286,7 @@ export const MineCard = ({
                                       onClick={async () => {
                                         setTxLoading(true);
                                         await client.actions.leave_mine({
-                                          account: account.account,
+                                          account: account as Account,
                                           mine_id: mine.id,
                                           miner_id:
                                             miner.minerClass.miner.id || 0,

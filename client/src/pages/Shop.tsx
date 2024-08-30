@@ -24,10 +24,10 @@ import { dojoConfig } from "../../dojoConfig";
 function Shop() {
   const {
     setup: { client },
-    account,
+    // account,
   } = useDojo();
 
-  // const { account } = useAccount();
+  const { account } = useAccount();
 
   const { readableAxeBalance, readableMineralBalance } = useBalances();
 
@@ -51,7 +51,7 @@ function Shop() {
               onClick={async () => {
                 console.log("buying axe");
                 await client.actions.buy_axe({
-                  account: account.account,
+                  account: account as Account,
                   qty: 1,
                 });
               }}
@@ -76,9 +76,7 @@ function Shop() {
           <CardContent>
             <Button
               className="mt-8"
-              onClick={() =>
-                client.actions.buy_axe({ account: account.account, qty: 1 })
-              }
+              onClick={() => console.log("selling mineral", account as Account)}
             >
               {" "}
               Sell $MINERAL <Axe className="w-8 ml-3" />

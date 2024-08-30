@@ -12,6 +12,8 @@ import { MinerCard } from "@/components/modules/MinerCard";
 import { useMiners } from "@/hooks/useMiners";
 import { useUiSounds } from "@/hooks/useSound";
 import { motion } from "framer-motion";
+import { useAccount } from "@starknet-react/core";
+import { Account } from "starknet";
 
 import { ToggleGroup, ToggleGroupItem } from "@/components/ui/toggle-group";
 
@@ -21,10 +23,11 @@ function Tavern() {
       client,
       contractComponents: { Mine },
     },
-    account,
   } = useDojo();
 
   const { allMiners } = useMiners();
+
+  const { account } = useAccount();
 
   const [filter, setFilter] = useState<"Dead" | "Alive">("Alive");
 
@@ -38,6 +41,8 @@ function Tavern() {
       .sort((a, b) => b.minerClass.miner.id - a.minerClass.miner.id); // Sort by miner ID in descending order
   }, [filter, allMiners]);
 
+  console.log(filteredMiners);
+
   return (
     <div className="container mx-auto">
       <h1 className="text-3xl font-bold mb-4 font-arbutus">
@@ -48,7 +53,7 @@ function Tavern() {
         className="mb-4"
         onClick={async () => {
           play();
-          await client.actions.spawn_miner({ account: account.account });
+          await client.actions.spawn_miner({ account: account as Account });
         }}
       >
         Buy a Dwarf a Drink

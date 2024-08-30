@@ -28,6 +28,10 @@ export const getConnectors = (): { connectors: Connector[] } => {
         target: actions,
         method: "leave_mine",
       },
+      {
+        target: actions,
+        method: "create_mine",
+      },
     ],
   }) as never as Connector;
   return { connectors: [cartridge] };

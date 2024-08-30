@@ -1,0 +1,22 @@
+kind = "DojoModel"
+class_hash = "0x71008e5ba49adb3d693912ab2358266b65e6c71cdbc67a2bc5fc616ddf6f64b"
+original_class_hash = "0x71008e5ba49adb3d693912ab2358266b65e6c71cdbc67a2bc5fc616ddf6f64b"
+abi = "manifests/release/base/abis/models/dugdug-ERC20BalanceModel-168c1bfc.json"
+tag = "dugdug-ERC20BalanceModel"
+qualified_path = "origami_token::components::token::erc20::erc20_balance::erc_20_balance_model"
+manifest_name = "dugdug-ERC20BalanceModel-168c1bfc"
+
+[[members]]
+name = "token"
+type = "ContractAddress"
+key = true
+
+[[members]]
+name = "account"
+type = "ContractAddress"
+key = true
+
+[[members]]
+name = "amount"
+type = "u256"
+key = false

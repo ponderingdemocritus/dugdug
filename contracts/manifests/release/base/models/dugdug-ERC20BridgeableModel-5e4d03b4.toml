@@ -1,0 +1,17 @@
+kind = "DojoModel"
+class_hash = "0x1d83e6ddb8065b7fc080e9c99ec88b2409cbea751fceea9309938b16c762caf"
+original_class_hash = "0x1d83e6ddb8065b7fc080e9c99ec88b2409cbea751fceea9309938b16c762caf"
+abi = "manifests/release/base/abis/models/dugdug-ERC20BridgeableModel-5e4d03b4.json"
+tag = "dugdug-ERC20BridgeableModel"
+qualified_path = "dugdug::tokens::AXE::erc_20_bridgeable_model"
+manifest_name = "dugdug-ERC20BridgeableModel-5e4d03b4"
+
+[[members]]
+name = "token"
+type = "ContractAddress"
+key = true
+
+[[members]]
+name = "l2_bridge_address"
+type = "ContractAddress"
+key = false

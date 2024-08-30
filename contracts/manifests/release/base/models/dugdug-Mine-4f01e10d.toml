@@ -1,0 +1,57 @@
+kind = "DojoModel"
+class_hash = "0x5a5e67896b3e178ad505c62c62bb61fdd80607cc27af6d920ac1e3f62a5b050"
+original_class_hash = "0x5a5e67896b3e178ad505c62c62bb61fdd80607cc27af6d920ac1e3f62a5b050"
+abi = "manifests/release/base/abis/models/dugdug-Mine-4f01e10d.json"
+tag = "dugdug-Mine"
+qualified_path = "dugdug::models::mine"
+manifest_name = "dugdug-Mine-4f01e10d"
+
+[[members]]
+name = "id"
+type = "u32"
+key = true
+
+[[members]]
+name = "current_status"
+type = "MineStatus"
+key = false
+
+[[members]]
+name = "mining_state"
+type = "u32"
+key = false
+
+[[members]]
+name = "selfless_miners"
+type = "u32"
+key = false
+
+[[members]]
+name = "selfish_miners"
+type = "u32"
+key = false
+
+[[members]]
+name = "stability"
+type = "u32"
+key = false
+
+[[members]]
+name = "efficiency"
+type = "u32"
+key = false
+
+[[members]]
+name = "seed"
+type = "u128"
+key = false
+
+[[members]]
+name = "mineral_payout"
+type = "u64"
+key = false
+
+[[members]]
+name = "last_miner"
+type = "ContractAddress"
+key = false

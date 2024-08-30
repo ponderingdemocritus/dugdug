@@ -1,0 +1,22 @@
+kind = "DojoModel"
+class_hash = "0x50f1db7c94f8ae69569496bf28a4a0f0c6db74d3aa700b88b88664aad4cfe0c"
+original_class_hash = "0x50f1db7c94f8ae69569496bf28a4a0f0c6db74d3aa700b88b88664aad4cfe0c"
+abi = "manifests/release/base/abis/models/dugdug-MineUpdate-1a1d7f54.json"
+tag = "dugdug-MineUpdate"
+qualified_path = "dugdug::events::mine_update"
+manifest_name = "dugdug-MineUpdate-1a1d7f54"
+
+[[members]]
+name = "id"
+type = "u32"
+key = true
+
+[[members]]
+name = "time"
+type = "u64"
+key = false
+
+[[members]]
+name = "mine"
+type = "Mine"
+key = false

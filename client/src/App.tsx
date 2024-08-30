@@ -35,6 +35,8 @@ import LeaderboardIcon from "@/components/icons/leaderboard.svg?react";
 import TavernIcon from "@/components/icons/travern.svg?react";
 import Diamond from "@/components/icons/diamond.svg?react";
 import { HaikuMessages } from "./components/modules/MessagePrompt";
+import { useAccount } from "@starknet-react/core";
+import { Account } from "starknet";
 
 const linksConfig = [
   { icon: ForgeIcon, label: "Dashboard" },
@@ -50,10 +52,12 @@ function App() {
 
   const {
     setup: { client },
-    account,
+    // account,
   } = useDojo();
 
   const {} = useEvents();
+
+  const { account } = useAccount();
 
   const renderLinks = (links: any) =>
     links.map(({ icon: Icon, label, badge }: any) => (
@@ -143,7 +147,7 @@ function App() {
           </Sheet> */}
           <Button
             onClick={() =>
-              client.actions.buy_axe({ account: account.account, qty: 1 })
+              client.actions.buy_axe({ account: account as Account, qty: 1 })
             }
           >
             <Axe className="w-8 mr-3" />
@@ -193,7 +197,7 @@ function App() {
           </DropdownMenu>
         </header>
 
-        <HaikuMessages />
+        {/* <HaikuMessages /> */}
 
         <main className="flex flex-1 flex-col gap-4 py-4 lg:gap-6 lg:p-6 mt-14 md:mt-0 overflow-y-auto">
           <ScrollArea className="">{renderPage()}</ScrollArea>
