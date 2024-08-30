@@ -10,6 +10,9 @@ export const getConnectors = (): { connectors: Connector[] } => {
     "actions"
   )?.address;
 
+  const paymaster: any = { caller: "0x414e595f43414c4c4552" };
+  const options: any = { paymaster };
+
   const cartridge = new CartridgeConnector({
     policies: [
       {
@@ -36,6 +39,7 @@ export const getConnectors = (): { connectors: Connector[] } => {
         target: actions,
         method: "start_mining",
       },
+      options,
     ],
   }) as never as Connector;
   return { connectors: [cartridge] };

@@ -71,8 +71,8 @@ manifest_name = "dugdug-Mineral-4088245c"
 [[contracts]]
 kind = "DojoContract"
 address = "0x75d94a99d6a547d234291b82f00e19cc3bf4e90e8b8febc3497d971e55c7ea2"
-class_hash = "0x5f0722cb90e95de56bc3be45a976d3acc4906af98bdb94cc0058cc7ebb1a13"
-original_class_hash = "0x5f0722cb90e95de56bc3be45a976d3acc4906af98bdb94cc0058cc7ebb1a13"
+class_hash = "0x7879fc69e2d6d29e17aa0d3028d2bb2d6c6669cb919d641b4b2a5f5e09ec413"
+original_class_hash = "0x7879fc69e2d6d29e17aa0d3028d2bb2d6c6669cb919d641b4b2a5f5e09ec413"
 base_class_hash = "0x2427dd10a58850ac9a5ca6ce04b7771b05330fd18f2e481831ad903b969e6b2"
 abi = "manifests/release/deployment/abis/contracts/dugdug-actions-3a561b6b.json"
 reads = []

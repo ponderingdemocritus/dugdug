@@ -128,7 +128,7 @@ function App() {
               setIsLoading(true);
               await client.actions.buy_axe({
                 account: account as Account,
-                qty: 1,
+                qty: 10,
               });
               setIsLoading(false);
             }}

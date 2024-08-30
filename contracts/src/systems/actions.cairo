@@ -294,7 +294,8 @@ mod actions {
                                 0
                             },
                         };
-                        get_mineral(world).mint_from(get_caller_address(), miner_payout.into());
+                        let payout: u256 = miner_payout * 1000000000000000000;
+                        get_mineral(world).mint_from(get_caller_address(), payout.into());
                     },
                     MineStatus::Collapsed => {
                         let mine1 = MineTrait::new(world);
