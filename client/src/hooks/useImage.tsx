@@ -8,7 +8,9 @@ const useImage = (seed: string, prompt: string) => {
   useEffect(() => {
     const fetchImage = async () => {
       try {
-        const response = await fetch(`/api/image/${seed}/${prompt}`);
+        const response = await fetch(
+          `${import.meta.env.VITE_PUBLIC_API}/image/${seed}/${prompt}`
+        );
         if (!response.ok) {
           throw new Error("Failed to fetch image");
         }
