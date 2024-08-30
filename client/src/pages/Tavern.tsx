@@ -38,7 +38,11 @@ function Tavern() {
   const filteredMiners = useMemo(() => {
     return allMiners
       .filter((miner) => {
-        return miner.minerClass.status() === filter;
+        return (
+          miner.minerClass.status() === filter &&
+          miner.minerClass.miner.owner.toString() ===
+            BigInt(account?.address || "0").toString()
+        );
       })
       .sort((a, b) => b.minerClass.miner.id - a.minerClass.miner.id); // Sort by miner ID in descending order
   }, [filter, allMiners]);

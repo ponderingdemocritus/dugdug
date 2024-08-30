@@ -225,7 +225,7 @@ export const MineCard = ({
                                       className="self-center"
                                       htmlFor="email"
                                     >
-                                      Be Selfish
+                                      Be Selfish Yeild ++
                                     </Label>
                                     <Switch
                                       checked={choice}
@@ -236,7 +236,7 @@ export const MineCard = ({
                                       className="self-center"
                                       htmlFor="email"
                                     >
-                                      Be Selfless
+                                      Be Selfless Stability ++
                                     </Label>
                                   </div>
                                 ) : null}
@@ -249,6 +249,7 @@ export const MineCard = ({
                                   Number(readableAxeBalance) > 0 && (
                                     <Button
                                       disabled={txLoading}
+                                      className={txLoading ? "shake-small" : ""}
                                       onClick={async () => {
                                         setTxLoading(true);
                                         play();
@@ -279,7 +280,7 @@ export const MineCard = ({
                                     }
                                   >
                                     <Axe className="w-8 mr-3" />
-                                    Buy $AXE: {readableAxeBalance}
+                                    {txLoading ? "Buying..." : "Buy $AXE"}
                                   </Button>
                                 )}
 

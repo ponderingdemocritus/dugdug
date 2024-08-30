@@ -23,10 +23,7 @@ export const useMiners = () => {
   const { account } = useAccount();
   const { setup } = useDojo();
 
-  const myMiners = useEntityQuery([
-    Has(Miner),
-    HasValue(Miner, { owner: BigInt(account?.address || "0") }),
-  ]);
+  const myMiners = useEntityQuery([Has(Miner)]);
 
   const allMiners = useMemo(() => {
     return myMiners.map((miner) => {

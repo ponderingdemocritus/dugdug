@@ -49,7 +49,7 @@ export const Modal = () => {
   return (
     <div
       className={`w-screen h-screen fixed z-50 overflow-hidden bg-cover bg-center bg-no-repeat ${
-        isShaking ? "shake" : ""
+        isShaking ? "shake-heavy" : ""
       }`}
       style={{ backgroundImage: `url('${modalContent.mine?.image()}')` }}
     >
