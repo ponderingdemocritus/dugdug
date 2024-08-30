@@ -17,12 +17,12 @@ story = "In the heart of the ancient mountains lies a network of dark, treachero
 chat_completion_provider = "openai"
 ai_model = "gpt-4o-mini"
 ai_url = "https://api.openai.com/v1/chat/completions"
-ai_token = "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"
+ai_token = ""
 
 embedding_provider = "openai"
 embedding_model = "text-embedding-3-small"
 embedding_url = "https://api.openai.com/v1/embeddings"
-embedding_token = "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"
+embedding_token = ""
 
 [haiku.db_config]
 vector_size = "1536"
