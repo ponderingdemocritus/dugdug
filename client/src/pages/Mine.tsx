@@ -40,13 +40,15 @@ function Mine() {
     <div className="container mx-auto">
       <h1 className="text-3xl font-bold mb-4">Mines</h1>
 
-      <Button
-        onClick={async () =>
-          await client.actions.create_mine({ account: account as Account })
-        }
-      >
-        Create mine
-      </Button>
+      {allMines && allMines.length === 0 && (
+        <Button
+          onClick={async () =>
+            await client.actions.create_mine({ account: account as Account })
+          }
+        >
+          Create mine
+        </Button>
+      )}
 
       <div className="mt-4">
         <ToggleGroup type="single">

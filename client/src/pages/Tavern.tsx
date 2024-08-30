@@ -51,6 +51,7 @@ function Tavern() {
 
       <Button
         className="mb-4"
+        disabled={isLoading}
         onClick={async () => {
           setIsLoading(true);
           play();

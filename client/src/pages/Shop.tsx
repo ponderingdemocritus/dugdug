@@ -31,6 +31,8 @@ function Shop() {
 
   const { readableAxeBalance, readableMineralBalance } = useBalances();
 
+  const [isLoading, setIsLoading] = useState(false);
+
   return (
     <div className="container mx-auto">
       <h1 className="text-3xl font-bold mb-4 font-arbutus">Shop</h1>
@@ -48,11 +50,14 @@ function Shop() {
           <CardContent>
             <Button
               className="mt-8"
+              disabled={isLoading}
               onClick={async () => {
+                setIsLoading(true);
                 await client.actions.buy_axe({
                   account: account as Account,
                   qty: 1,
                 });
+                setIsLoading(false);
               }}
             >
               {" "}

@@ -248,6 +248,7 @@ export const MineCard = ({
                                     0 &&
                                   Number(readableAxeBalance) > 0 && (
                                     <Button
+                                      disabled={txLoading}
                                       onClick={async () => {
                                         setTxLoading(true);
                                         play();
@@ -269,6 +270,7 @@ export const MineCard = ({
 
                                 {Number(readableAxeBalance) == 0 && (
                                   <Button
+                                    disabled={txLoading}
                                     onClick={() =>
                                       client.actions.buy_axe({
                                         account: account as Account,
@@ -286,6 +288,7 @@ export const MineCard = ({
                                   miner.minerClass.miner.mine_id ===
                                     mine.id && (
                                     <Button
+                                      disabled={txLoading}
                                       variant={"destructive"}
                                       onClick={async () => {
                                         setTxLoading(true);
