@@ -31,9 +31,9 @@ function Landing() {
             </p>
           </div>
           <div className="text-4xl  my-8">
-            <div>1. AXE</div>
-            <div>2. ....</div>
-            <div>3. MINERALS</div>
+            <div>1. DUGDUG</div>
+            <div>2. ......</div>
+            <div>3. PROFIT</div>
           </div>
 
           <div className="mt-8">
