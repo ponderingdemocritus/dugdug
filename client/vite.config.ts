@@ -18,7 +18,6 @@ export default defineConfig({
       "/api": {
         target: process.env.VITE_PUBLIC_API, // Replace with your API server URL
         changeOrigin: true,
-
         rewrite: (path) => path.replace(/^\/api/, ""),
       },
     },

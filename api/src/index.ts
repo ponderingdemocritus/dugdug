@@ -1,7 +1,7 @@
 import { Hono } from "hono";
+import { Database } from "sqlite3";
 import * as fal from "@fal-ai/serverless-client";
 import { S3Client, PutObjectCommand } from "@aws-sdk/client-s3";
-import mysql from "mysql2/promise";
 
 const s3Client = new S3Client({
   region: "ap-northeast-1",
@@ -16,31 +16,16 @@ fal.config({
 });
 
 const app = new Hono();
+const db = new Database("images.db");
 
-let db: mysql.Connection;
-
-async function connectToDatabase() {
-  try {
-    db = await mysql.createConnection(process.env.DATABASE_URL!);
-    console.log("Connected to the database");
-
-    // Initialize the database
-    await db.query(`CREATE TABLE IF NOT EXISTS images (
-      seed VARCHAR(255) PRIMARY KEY,
-      image_name VARCHAR(255)
-    )`);
-    console.log("Database initialized");
-  } catch (err) {
-    console.error("Failed to connect to the database:", err);
-    console.log("DATABASE_URL:", process.env.DATABASE_URL);
-    process.exit(1);
-  }
-}
-
-await connectToDatabase();
+// Initialize the database
+db.run(`CREATE TABLE IF NOT EXISTS images (
+  seed TEXT PRIMARY KEY,
+  image_name TEXT
+)`);
 
 app.get("/", (c) => {
-  return c.text("dugdug");
+  return c.text("Hello Hono!");
 });
 
 app.get("/image/:seed/:prompt", async (c) => {
@@ -48,11 +33,15 @@ app.get("/image/:seed/:prompt", async (c) => {
   const prompt = c.req.param("prompt");
 
   // Check if the image exists in the database
-  const [rows]: any = await db.execute(
-    "SELECT image_name FROM images WHERE seed = ?",
-    [seed]
-  );
-  const existingImageName = rows.length ? rows[0].image_name : null;
+  const existingImageName = await new Promise((resolve) => {
+    db.get(
+      "SELECT image_name FROM images WHERE seed = ?",
+      [seed],
+      (err, row: any) => {
+        resolve(row ? row.image_name : null);
+      }
+    );
+  });
 
   if (existingImageName) {
     return c.text(
@@ -63,8 +52,6 @@ app.get("/image/:seed/:prompt", async (c) => {
 
   // If not found, generate a new image name and store it in the database
   const imageName = `image_${seed}.png`;
-
-  console.log(imageName);
 
   const image = await fal.subscribe("fal-ai/flux-pro", {
     input: {
@@ -83,8 +70,6 @@ app.get("/image/:seed/:prompt", async (c) => {
     return c.text("Failed to generate image", 500);
   }
 
-  console.log(imageUrl);
-
   // Download the image
   const response = await fetch(imageUrl);
   const imageBuffer = await response.arrayBuffer();
@@ -100,11 +85,16 @@ app.get("/image/:seed/:prompt", async (c) => {
     })
   );
 
-  await db.execute("INSERT INTO images (seed, image_name) VALUES (?, ?)", [
-    seed,
-    s3Key,
-  ]);
-
+  await new Promise((resolve, reject) => {
+    db.run(
+      "INSERT INTO images (seed, image_name) VALUES (?, ?)",
+      [seed, s3Key],
+      (err) => {
+        if (err) reject(err);
+        else resolve(s3Key);
+      }
+    );
+  });
   return c.text(
     `https://dugdugdug.s3.ap-northeast-1.amazonaws.com/images/${imageName}`,
     200
