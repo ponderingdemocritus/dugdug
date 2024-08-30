@@ -64,6 +64,8 @@ app.get("/image/:seed/:prompt", async (c) => {
   // If not found, generate a new image name and store it in the database
   const imageName = `image_${seed}.png`;
 
+  console.log(imageName);
+
   const image = await fal.subscribe("fal-ai/flux-pro", {
     input: {
       prompt: `${prompt}  pixel art cave`,
@@ -80,6 +82,8 @@ app.get("/image/:seed/:prompt", async (c) => {
   if (!imageUrl) {
     return c.text("Failed to generate image", 500);
   }
+
+  console.log(imageUrl);
 
   // Download the image
   const response = await fetch(imageUrl);

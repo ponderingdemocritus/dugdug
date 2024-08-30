@@ -13,8 +13,6 @@ function Landing() {
     connect({ connector: connectors[0] });
   };
 
-  console.log(account);
-
   return (
     <div className="relative w-full h-screen">
       <img

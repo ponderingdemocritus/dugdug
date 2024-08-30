@@ -13,6 +13,7 @@ const useImage = (seed: string, prompt: string) => {
           throw new Error("Failed to fetch image");
         }
         const imageUrl = await response.text();
+        console.log(imageUrl);
         setImageUrl(imageUrl);
       } catch (err: any) {
         setError(err);

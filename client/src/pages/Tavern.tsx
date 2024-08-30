@@ -41,8 +41,6 @@ function Tavern() {
       .sort((a, b) => b.minerClass.miner.id - a.minerClass.miner.id); // Sort by miner ID in descending order
   }, [filter, allMiners]);
 
-  console.log(allMiners);
-
   return (
     <div className="container mx-auto">
       <h1 className="text-3xl font-bold mb-4 font-arbutus">

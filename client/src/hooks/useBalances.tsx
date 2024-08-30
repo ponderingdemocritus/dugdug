@@ -21,8 +21,6 @@ export const useBalances = () => {
 
   const { account } = useAccount();
 
-  console.log("account", account);
-
   const axe = getContractByName(dojoConfig.manifest, "dugdug", "Axe")?.address;
 
   const mineral = getContractByName(
@@ -30,8 +28,6 @@ export const useBalances = () => {
     "dugdug",
     "Mineral"
   )?.address;
-
-  console.log("axe", dojoConfig);
 
   const axeBalance = useComponentValue(
     ERC20BalanceModel,

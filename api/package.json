@@ -4,7 +4,7 @@
   "scripts": {
     "dev": "bun run --hot src/index.ts",
     "build": "tsc",
-    "serve": "node src/index.js"
+    "serve": "tsc && bun run src/index.js"
   },
   "dependencies": {
     "@aws-sdk/client-s3": "^3.637.0",

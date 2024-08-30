@@ -49,7 +49,6 @@ function Shop() {
             <Button
               className="mt-8"
               onClick={async () => {
-                console.log("buying axe");
                 await client.actions.buy_axe({
                   account: account as Account,
                   qty: 1,

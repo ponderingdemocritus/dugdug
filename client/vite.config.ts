@@ -16,8 +16,9 @@ export default defineConfig({
   server: {
     proxy: {
       "/api": {
-        target: process.env.VITE_PUBLIC_API, // Replace with your API server URL
+        target: "https://localhost:3000", // Replace with your API server URL
         changeOrigin: true,
+        secure: false,
         rewrite: (path) => path.replace(/^\/api/, ""),
       },
     },
