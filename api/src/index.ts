@@ -2,6 +2,7 @@ import { Hono } from "hono";
 import * as fal from "@fal-ai/serverless-client";
 import { S3Client, PutObjectCommand } from "@aws-sdk/client-s3";
 import mysql from "mysql2/promise";
+import { cors } from "hono/cors";
 
 const s3Client = new S3Client({
   region: "ap-northeast-1",
@@ -38,6 +39,8 @@ async function connectToDatabase() {
 }
 
 await connectToDatabase();
+
+app.use("/*", cors());
 
 app.get("/", (c) => {
   return c.text("dugdug");
