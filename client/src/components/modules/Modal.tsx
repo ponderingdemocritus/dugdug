@@ -9,6 +9,7 @@ import { useAccount } from "@starknet-react/core";
 import { Account } from "starknet";
 
 import Tombstone from "@/components/icons/tombstone.svg?react";
+import CoinFountain from "./CoinsStreaming";
 
 export const Modal = () => {
   const setModal = useUIStore((state) => state.setModal);
@@ -56,6 +57,12 @@ export const Modal = () => {
       style={{ backgroundImage: `url('${modalContent.mine?.image()}')` }}
     >
       <div className="w-full h-full bg-black bg-opacity-50 flex justify-center items-center">
+        {/* Coin Fountain */}
+
+        {modalContent.mine?.mine.current_status.toString() === "Collapsed" && (
+          <CoinFountain />
+        )}
+
         <div className="container p-8 rounded-lg max-h-full overflow-y-auto">
           <div className="w-full mb-6">
             <Button onClick={() => setModal(false)}>close</Button>
@@ -115,7 +122,7 @@ export const Modal = () => {
                             >
                               {loading
                                 ? "Withdrawing..."
-                                : `${yeildPerMiner} $MINERAL`}
+                                : `${modalContent.mine.payoutPerMinerType()} $MINERAL`}
                             </Button>
                           )}
                       </div>

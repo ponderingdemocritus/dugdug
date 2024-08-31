@@ -155,8 +155,8 @@ export const MineCard = ({
                     miner.minerClass.miner.mine_id === mine.id &&
                     Number(mine.id) !== 0
                 )
-                .map((miner, index) => (
-                  <div key={index} className="relative">
+                .map((miner) => (
+                  <div key={miner.minerClass.miner.id} className="relative">
                     <img
                       className={`w-10 h-10 rounded-full border transition-all duration-200 border-white/10  ${
                         miner.minerClass.status() === "Alive" &&
@@ -237,8 +237,8 @@ export const MineCard = ({
                   </DialogHeader>
                   <Carousel className="w-full max-w-xs mx-auto">
                     <CarouselContent>
-                      {miners.map((miner, index) => (
-                        <CarouselItem key={index}>
+                      {miners.map((miner) => (
+                        <CarouselItem key={miner.minerClass.miner.id}>
                           <MinerCard
                             miner={miner.minerClass}
                             children={

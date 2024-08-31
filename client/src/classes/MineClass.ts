@@ -27,6 +27,28 @@ export class MineClass {
     }
   }
 
+  payoutPerMinerType(): {
+    selfish: number;
+    selfless: number;
+  } {
+    const totalMiners = this.totalMiners();
+    const selfishMiners = this.mine.selfish_miners;
+    const selflessMiners = this.mine.selfless_miners;
+    const payout = this.mine.mineral_payout;
+
+    const selfishPayout = Math.floor(
+      (payout * 0.75) / Math.max(selfishMiners, 1)
+    );
+    const selflessPayout = Math.floor(
+      (payout * 0.25) / Math.max(selflessMiners, 1)
+    );
+
+    return {
+      selfish: selfishPayout,
+      selfless: selflessPayout,
+    };
+  }
+
   name(): string {
     const adjectiveValues = Object.values(MineAdjective).filter((v) =>
       isNaN(Number(v))

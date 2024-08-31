@@ -38,6 +38,7 @@ import { HaikuMessages } from "./components/modules/MessagePrompt";
 import { useAccount } from "@starknet-react/core";
 import { Account } from "starknet";
 import { Navigate } from "react-router-dom";
+import CoinFountain from "./components/modules/CoinsStreaming";
 
 const linksConfig = [
   { icon: ForgeIcon, label: "Dashboard" },
@@ -116,6 +117,7 @@ function App() {
   return (
     <div className="grid min-h-screen w-full md:grid-cols-[220px_1fr] lg:grid-cols-[280px_1fr] relative ">
       {modal && <Modal />}
+
       <div className="hidden border-r bg-muted/40 md:block">
         <div className="flex h-full max-h-screen flex-col gap-2">
           <div className="flex h-14 items-center border-b px-4 lg:h-[60px] lg:px-6">

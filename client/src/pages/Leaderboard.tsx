@@ -5,6 +5,8 @@ import { Has, HasValue, getComponentValue } from "@dojoengine/recs";
 import { useMemo, useState } from "react";
 import { num } from "starknet";
 import { useAccount } from "@starknet-react/core";
+import { useBalances } from "@/hooks/useBalances";
+import { getContractByName } from "@dojoengine/core";
 
 function Leaderboard() {
   const {
@@ -52,11 +54,13 @@ function Leaderboard() {
             <th className="py-2 px-4 border-b">Rank</th>
             <th className="py-2 px-4 border-b">Player</th>
             <th className="py-2 px-4 border-b">Dead Miners</th>
+            <th className="py-2 px-4 border-b">$MINERALS</th>
+            <th className="py-2 px-4 border-b">$AXE</th>
           </tr>
         </thead>
         <tbody>
           {collapsedMines.map((mine, index) => (
-            <tr key={mine.lastMiner} className="hover:bg-gray-900">
+            <tr key={mine.lastMiner} className="hover:bg-primary">
               <td className="py-2 px-4 border-b">{index + 1}</td>
               <td className="py-2 px-4 border-b">
                 {BigInt(account?.address || "0") === BigInt(mine.lastMiner)
@@ -64,6 +68,8 @@ function Leaderboard() {
                   : num.toHexString(mine.lastMiner).slice(-8)}
               </td>
               <td className="py-2 px-4 border-b">{mine.deadMiners}</td>
+
+              <Balance address={mine.lastMiner || "0"} />
             </tr>
           ))}
         </tbody>
@@ -71,5 +77,18 @@ function Leaderboard() {
     </div>
   );
 }
+
+const Balance = ({ address }: { address: string }) => {
+  const { readableAxeBalance, readableMineralBalance } = useBalances({
+    address,
+  });
+
+  return (
+    <>
+      <td>{readableMineralBalance.toLocaleLowerCase()}</td>
+      <td>{readableAxeBalance.toLocaleLowerCase()}</td>
+    </>
+  );
+};
 
 export default Leaderboard;

@@ -9,17 +9,17 @@ import { Entity } from "@dojoengine/recs";
 import { useAccount } from "@starknet-react/core";
 import { getContractByName } from "@dojoengine/core";
 import { dojoConfig } from "../../dojoConfig";
-export const useBalances = () => {
-  //   const { account } = useAccount();
+
+export const useBalances = ({ address }: { address?: string | null } = {}) => {
   const {
     setup: {
       contractComponents: { ERC20BalanceModel },
-      //   account: { account },
       torii,
     },
   } = useDojo();
 
   const { account } = useAccount();
+  const effectiveAddress = address || account?.address || "0";
 
   const axe = getContractByName(dojoConfig.manifest, "dugdug", "Axe")?.address;
 
@@ -31,12 +31,12 @@ export const useBalances = () => {
 
   const axeBalance = useComponentValue(
     ERC20BalanceModel,
-    torii.poseidonHash([axe, account?.address || "0"]) as Entity
+    torii.poseidonHash([axe, effectiveAddress]) as Entity
   );
 
   const mineralModel = useComponentValue(
     ERC20BalanceModel,
-    torii.poseidonHash([mineral, account?.address || "0"]) as Entity
+    torii.poseidonHash([mineral, effectiveAddress]) as Entity
   );
 
   const parseAmount = (amount: string | undefined) => {
