@@ -79,11 +79,13 @@ function Shop() {
 
           <CardContent>
             <Button
+              asChild
               className="mt-8"
               onClick={() => console.log("selling mineral", account as Account)}
             >
-              {" "}
-              Sell $MINERAL <Axe className="w-8 ml-3" />
+              <a href="https://game-jam.interface-9yz.pages.dev/dca?outputCurrency=ETH&inputCurrency=MINERAL&showOrders=active&amount=200000&duration=14272">
+                Sell $MINERAL <Axe className="w-8 ml-3" />
+              </a>{" "}
             </Button>
 
             <CardDescription className="mt-4">
