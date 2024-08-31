@@ -122,7 +122,13 @@ export const Modal = () => {
                             >
                               {loading
                                 ? "Withdrawing..."
-                                : `${modalContent.mine.payoutPerMinerType()} $MINERAL`}
+                                : miner.minerClass.miner.choice.toString() ===
+                                  "Selfish"
+                                ? `${
+                                    modalContent.mine.payoutPerMinerType()
+                                      .selfish
+                                  } $MINERAL`
+                                : "No payout available"}
                             </Button>
                           )}
                       </div>
