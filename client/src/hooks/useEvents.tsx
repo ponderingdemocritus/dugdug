@@ -55,12 +55,18 @@ export const useEvents = () => {
     component: Component<any>,
     handler: (update: ComponentUpdate) => void
   ) => {
-    defineComponentSystem(world, component, (update: ComponentUpdate) => {
-      if (update.value[0]?.time * 1000 <= Date.now() - 100000) {
-        return;
-      }
-      handler(update);
-    });
+    defineComponentSystem(
+      world,
+      component,
+      (update: ComponentUpdate) => {
+        console.log(update.value[0]?.time * 1000 <= Date.now() - 10000);
+        if (update.value[0]?.time * 1000 <= Date.now() - 100000) {
+          return;
+        }
+        handler(update);
+      },
+      { runOnInit: false }
+    );
   };
 
   useEffect(() => {
