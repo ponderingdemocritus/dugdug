@@ -78,18 +78,21 @@ function Shop() {
           </CardHeader>
 
           <CardContent>
-            <Button
-              asChild
-              className="mt-8"
-              onClick={() => console.log("selling mineral", account as Account)}
+            <a
+              target="_blank"
+              href="https://game-jam.interface-9yz.pages.dev/dca?outputCurrency=ETH&inputCurrency=MINERAL&showOrders=active&amount=200000&duration=14272"
             >
-              <a href="https://game-jam.interface-9yz.pages.dev/dca?outputCurrency=ETH&inputCurrency=MINERAL&showOrders=active&amount=200000&duration=14272">
-                Sell $MINERAL <Axe className="w-8 ml-3" />
-              </a>{" "}
-            </Button>
-
+              <Button
+                className="mt-8"
+                onClick={() =>
+                  console.log("selling mineral", account as Account)
+                }
+              >
+                Sell $MINERAL on EKUBO <Axe className="w-8 ml-3" />
+              </Button>
+            </a>{" "}
             <CardDescription className="mt-4">
-              1 $MINERAL = 0.0001ETH
+              1 $MINERAL = 0.000001ETH
             </CardDescription>
           </CardContent>
         </Card>
