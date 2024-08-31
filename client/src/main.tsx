@@ -25,12 +25,6 @@ const router = createBrowserRouter([
   {
     path: "/app",
     element: <App />,
-    children: [
-      {
-        path: "mines",
-        element: <Mine />,
-      },
-    ],
   },
 ]);
 

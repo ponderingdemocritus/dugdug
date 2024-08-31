@@ -86,6 +86,8 @@ export const MineCard = ({
 
   const miners = useMemo(() => {
     return allMiners.filter((a) => {
+      const isOwnedByAddress =
+        BigInt(a.minerClass.miner.owner) === BigInt(account?.address || "0");
       const isMined = mine.current_status.toString() === "Mined";
       const isInMine = a.minerClass.miner.mine_id === mine.id;
       const isNotInMine = Number(a.minerClass.miner.mine_id) === 0;
@@ -93,13 +95,17 @@ export const MineCard = ({
         (a.minerClass.miner.last_checkup || 0) * 1000 <=
         new Date().getTime() - 60 * 15 * 1000;
 
+      if (!isOwnedByAddress) {
+        return false;
+      }
+
       if (isMined) {
         return isInMine;
       } else {
         return isNotInMine || (isInMine && isRecentlyChecked);
       }
     });
-  }, [allMiners, mineClass, mine]);
+  }, [allMiners, mineClass, mine, account]);
 
   const shakeStrength = useMemo(() => {
     if (

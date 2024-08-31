@@ -37,6 +37,7 @@ import Diamond from "@/components/icons/diamond.svg?react";
 import { HaikuMessages } from "./components/modules/MessagePrompt";
 import { useAccount } from "@starknet-react/core";
 import { Account } from "starknet";
+import { Navigate } from "react-router-dom";
 
 const linksConfig = [
   { icon: ForgeIcon, label: "Dashboard" },
@@ -50,14 +51,13 @@ function App() {
   const [page, setPage] = useState("Dashboard");
   const { setTheme } = useTheme();
 
+  const { account, address, isConnecting, isDisconnected } = useAccount();
+
   const {
     setup: { client },
-    // account,
   } = useDojo();
 
   const {} = useEvents();
-
-  const { account, isConnected } = useAccount();
 
   const [isLoading, setIsLoading] = useState(false);
 
@@ -100,6 +100,18 @@ function App() {
   const { myAliveMiners, myDeadMiners } = useMiners();
 
   const modal = useUIStore((state) => state.modal);
+
+  if (isConnecting) {
+    return <div>Connecting...</div>;
+  }
+
+  if (isDisconnected) {
+    return (
+      <div className="min-h-screen flex justify-center">
+        <div className="self-center">Filling Flagons....</div>
+      </div>
+    );
+  }
 
   return (
     <div className="grid min-h-screen w-full md:grid-cols-[220px_1fr] lg:grid-cols-[280px_1fr] relative ">

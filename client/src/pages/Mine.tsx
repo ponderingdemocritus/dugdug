@@ -1,5 +1,5 @@
 import { useDojo } from "@/dojo/useDojo";
-import { useMemo, useState } from "react";
+import { useMemo, useState, useEffect } from "react";
 import { useEntityQuery } from "@dojoengine/react";
 import { Has, getComponentValue } from "@dojoengine/recs";
 import { Button } from "@/components/ui/button";
@@ -23,6 +23,7 @@ function Mine() {
   const { account } = useAccount();
 
   const [filter, setFilter] = useState<"Open" | "Mined" | "Collapsed">("Open");
+  const [visibleMines, setVisibleMines] = useState(8);
 
   const allMines = useMemo(() => {
     return mines
@@ -35,6 +36,20 @@ function Mine() {
         return mine.current_status?.toString() === filter && mine.id !== 0;
       });
   }, [mines, filter]);
+
+  const handleScroll = () => {
+    if (
+      window.innerHeight + document.documentElement.scrollTop >=
+      document.documentElement.offsetHeight - 100
+    ) {
+      setVisibleMines((prevVisibleMines) => prevVisibleMines + 8);
+    }
+  };
+
+  useEffect(() => {
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
   return (
     <div className="container mx-auto">
@@ -65,7 +80,7 @@ function Mine() {
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6 my-8">
-        {allMines.map((mine) => (
+        {allMines.slice(0, visibleMines).map((mine) => (
           <motion.div
             key={mine.id}
             initial={{ opacity: 0, y: 50 }}
