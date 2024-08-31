@@ -26,8 +26,11 @@ const router = createBrowserRouter([
     path: "/app",
     element: <App />,
   },
+  {
+    path: "*",
+    element: <Landing />, // or a custom 404 component
+  },
 ]);
-
 const { connectors } = getConnectors();
 
 async function init() {
